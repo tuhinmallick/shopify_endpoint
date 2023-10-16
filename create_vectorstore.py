@@ -13,8 +13,7 @@ def metadata_func(record: dict, metadata: dict) -> dict:
     return metadata
 
 def create_vectorstore(documents, embeddings):
-    vectorstore = FAISS.from_documents(documents=documents, embedding=embeddings)
-    return vectorstore
+    return FAISS.from_documents(documents=documents, embedding=embeddings)
 
 def save_vectorstore(vectorstore, save_path, index_name):
     vectorstore.save_local(save_path, index_name)

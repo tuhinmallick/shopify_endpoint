@@ -22,8 +22,7 @@ def veryify_api_key(request: Request):
 @app.get("/product_search/")
 async def search_products(query: str, k: int = 4, token: str = Depends(veryify_api_key)):
     try:
-        results = vectorstore.similarity_search(query, k=k)
-        return results
+        return vectorstore.similarity_search(query, k=k)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
     
@@ -31,7 +30,6 @@ async def search_products(query: str, k: int = 4, token: str = Depends(veryify_a
 @app.get("/refund/")
 async def search_products(query: str, k: int = 1, token: str = Depends(veryify_api_key)):
     try:
-        results = vectorstore_refunds.similarity_search(query, k=k)
-        return results
+        return vectorstore_refunds.similarity_search(query, k=k)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
